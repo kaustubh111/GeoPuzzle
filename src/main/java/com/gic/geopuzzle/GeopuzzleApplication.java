@@ -9,7 +9,8 @@ public class GeopuzzleApplication {
 
 	public static void main(String[] args) {
 		try {
-			GeometryPuzzle ge = new GeometryPuzzle();
+			CustomShapeCreator customShapeCreator = new CustomShapeCreatorImpl();
+			RandomShapeCreator randomShapeCreator = new RandomShapeCreatorImpl();
 
 			Scanner scanner = new Scanner(System.in);
 
@@ -23,12 +24,12 @@ public class GeopuzzleApplication {
 			int choice = scanner.nextInt();
 
 			if (choice == 1) {
-				ge.createCustomShape(scanner);
+				customShapeCreator.createCustomShape(scanner);
 			} else if (choice == 2) {
-				ge.generateRandomShape(scanner);
+				randomShapeCreator.generateRandomShape(scanner);
 			}
 
-			ge.puzzleSection(scanner);
+			randomShapeCreator.playPuzzle(scanner);
 			System.out.println("Thank you for playing the GIC geometry puzzle app");
 			System.out.println("Have a nice day!");
 		}
