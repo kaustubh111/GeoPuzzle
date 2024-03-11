@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 public class RandomShapeCreatorImpl implements RandomShapeCreator{
 
-    public static List<List<Integer>> shape = new ArrayList<>();
+    public static Vector<List<Integer>> shape = new Vector<>();
     ConvexShapeValidator convexShapeValidator = new ConvexShapeValidatorImpl();
 
     @Override
@@ -14,7 +14,7 @@ public class RandomShapeCreatorImpl implements RandomShapeCreator{
         Random random = new Random(System.currentTimeMillis());
         Random random2 = new Random(System.nanoTime());
         Integer sides = random.nextInt(6) + 3; // Random between 3 to 8 points
-        shape = new ArrayList<>();
+        shape = new Vector<>();
 
         Integer[][] pointArr = new Integer[sides][2];
 
@@ -29,14 +29,10 @@ public class RandomShapeCreatorImpl implements RandomShapeCreator{
         for(int i =0; i<pointArr.length;i++){
             shape.add(Arrays.asList(pointArr[i]));
         }
-        if(!convexShapeValidator.isConvexShape(shape)){
-            generateRandomShape(scanner);
-        }else {
-
-            System.out.println("Your random shape is");
-            printShape();
-            playPuzzle(scanner);
-        }
+        shape = convexShapeValidator.convexShapeCreator(shape);
+        System.out.println("Your random shape is " + convexShapeValidator.isConvexShape(shape));
+        printShape();
+        playPuzzle(scanner);
     }
 
     private static void printShape() {
@@ -69,19 +65,23 @@ public class RandomShapeCreatorImpl implements RandomShapeCreator{
     }
     @Override
     public boolean isPointInsideShape(Integer[] testPoint) {
-        boolean result = false;
-        int j = shape.size() - 1;
+        int n = shape.size();
+        int[] polyX = new int[n];
+        int[] polyY = new int[n];
 
-        for (int i = 0; i < shape.size(); i++) {
-            if ((shape.get(i).get(0) > testPoint[1]) != (shape.get(j).get(1) > testPoint[1]) &&
-                    (testPoint[0] < (shape.get(j).get(0) - shape.get(i).get(0)) * (testPoint[1] - shape.get(i).get(1))
-                            / (shape.get(j).get(1) - shape.get(i).get(1)) + shape.get(i).get(0))) {
-                result = !result;
-            }
-            j = i;
+        for (int i = 0; i < n; i++) {
+            polyX[i] = shape.get(i).get(0);
+            polyY[i] = shape.get(i).get(1);
         }
-        return result;
-    }
 
+        boolean inside = false;
+        for (int i = 0, j = n - 1; i < n; j = i++) {
+            if ((polyY[i] > testPoint[1]) != (polyY[j] > testPoint[1]) &&
+                    (testPoint[0] < (polyX[j] - polyX[i]) * (testPoint[1] - polyY[i]) / (polyY[j] - polyY[i]) + polyX[i])) {
+                inside = !inside;
+            }
+        }
+        return inside;
+    }
 
 }
