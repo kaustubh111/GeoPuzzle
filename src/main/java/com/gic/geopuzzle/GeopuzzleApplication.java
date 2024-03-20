@@ -13,7 +13,7 @@ public class GeopuzzleApplication {
 
 			Scanner scanner = new Scanner(System.in);
 
-			System.out.println("Welcome to the GIC geometry puzzle app");
+			System.out.println("\nWelcome to the GIC geometry puzzle app");
 
 			System.out.println("[1] Create a custom shape");
 			System.out.println("[2] Generate a random shape");

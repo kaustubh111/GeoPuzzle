@@ -30,7 +30,7 @@ class RandomShapeTest {
 	void initMock(){
 		randomShapeCreator = new RandomShapeCreatorImpl();
 		convexShapeValidator = new ConvexShapeValidatorImpl();
-		randomShapeCreator.shape.clear();
+		RandomShapeCreatorImpl.shape.clear();
 		List a1 = new ArrayList<>();
 		List a2 = new ArrayList<>();
 		List a3 = new ArrayList<>();
@@ -44,9 +44,9 @@ class RandomShapeTest {
 		a3.add(5);
 		a3.add(5);
 
-		randomShapeCreator.shape.add(a1);
-		randomShapeCreator.shape.add(a2);
-		randomShapeCreator.shape.add(a3);
+		RandomShapeCreatorImpl.shape.add(a1);
+		RandomShapeCreatorImpl.shape.add(a2);
+		RandomShapeCreatorImpl.shape.add(a3);
 	}
 
 	@Test

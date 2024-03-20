@@ -4,5 +4,5 @@ import java.util.Scanner;
 
 public interface CustomShapeCreator {
 
-    public void createCustomShape(Scanner scanner);
+    void createCustomShape(Scanner scanner);
 }

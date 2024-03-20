@@ -29,8 +29,8 @@ public class RandomShapeCreatorImpl implements RandomShapeCreator{
         for(int i =0; i<pointArr.length;i++){
             shape.add(Arrays.asList(pointArr[i]));
         }
-        shape = convexShapeValidator.convexShapeCreator(shape);
-        System.out.println("Your random shape is " + convexShapeValidator.isConvexShape(shape));
+        shape = convexShapeValidator.generateConvexShape(shape);
+//        System.out.println("Your random shape is " + convexShapeValidator.isConvexShape(shape));
         printShape();
         playPuzzle(scanner);
     }

@@ -45,7 +45,7 @@ public class CustomShapeCreatorImpl implements CustomShapeCreator {
                     }
                     else{
                         printShape();
-                        String[] coordinate = input.split(" ");
+                        String[] coordinate = input2.split(" ");
                         x = Integer.parseInt(coordinate[0]);
                         y = Integer.parseInt(coordinate[1]);
                         addCoordinate(scanner,x,y);
@@ -75,10 +75,9 @@ public class CustomShapeCreatorImpl implements CustomShapeCreator {
             }
 
         } else {
-            if(shape.size() > 3) {
+            if(shape.size() >= 3) {
                 System.out.println("New coordinates" + "(" + point.get(0) + "," + point.get(1) + ")" + " is invalid!!!");
                 System.out.println("Not Adding new coordinates to current shape");
-                shape.remove(point);
                 System.out.println("Your current shape is ");
                 printShape();
             }else{

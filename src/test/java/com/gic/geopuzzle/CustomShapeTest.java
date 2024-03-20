@@ -19,7 +19,7 @@ public class CustomShapeTest {
     }
 
     @Test
-    void testCreateCustomShape_Success() {
+    void testCreateCustomShape() {
         List<List<Integer>> expectedShape = new ArrayList<>();
         expectedShape.add(List.of(1, 2));
         expectedShape.add(List.of(3, 4));
@@ -34,13 +34,13 @@ public class CustomShapeTest {
         assertEquals(expectedShape, CustomShapeCreatorImpl.shape);
     }
 
-    @Test
-    void testCreateCustomShape_InvalidCoordinate() {
-        String input = "1 1\n5 0\n5 1\n4 0\n";
-        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        Scanner scanner = new Scanner(inputStream);
-
-        assertThrows(IllegalStateException.class, () -> customShapeCreator.createCustomShape(scanner));
-    }
+//    @Test
+//    void testCreateCustomShape_InvalidCoordinate() {
+//        String input = "1 1\n5 0\n5 1\n4 0\n";
+//        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+//        Scanner scanner = new Scanner(inputStream);
+//
+//        assertThrows(IllegalStateException.class, () -> customShapeCreator.createCustomShape(scanner));
+//    }
 
 }

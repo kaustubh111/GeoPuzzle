@@ -23,15 +23,12 @@ public class ConvexShapeValidatorImpl implements ConvexShapeValidator {
     }
 
     @Override
-    public Vector<List<Integer>> convexShapeCreator(Vector<List<Integer>> coordinates) {
-        // Sort the coordinates lexicographically (first by x-coordinate, then by y-coordinate)
+    public Vector<List<Integer>> generateConvexShape(Vector<List<Integer>> coordinates) {
         Vector<List<Integer>> convexPolygon = computeConvexHull(coordinates);
-
-        // Print the convex polygon
         return convexPolygon;
-        }
+    }
 
-    public Vector<List<Integer>> computeConvexHull(List<List<Integer>> points) {
+    private Vector<List<Integer>> computeConvexHull(List<List<Integer>> points) {
         points.sort((p1, p2) -> {
             if (!p1.get(0).equals(p2.get(0))) {
                 return p1.get(0) - p2.get(0);

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public interface RandomShapeCreator {
 
-    public void generateRandomShape(Scanner scanner);
-    public void playPuzzle(Scanner scanner);
-    public boolean isPointInsideShape(Integer[] testPoint);
+    void generateRandomShape(Scanner scanner);
+    void playPuzzle(Scanner scanner);
+    boolean isPointInsideShape(Integer[] testPoint);
 }

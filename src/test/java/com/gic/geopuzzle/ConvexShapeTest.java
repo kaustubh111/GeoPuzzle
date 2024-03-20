@@ -35,7 +35,7 @@ public class ConvexShapeTest {
     }
 
     @Test
-    void testConvexShapeCreator() {
+    void testGenerateConvexShape() {
         ConvexShapeValidatorImpl validator = new ConvexShapeValidatorImpl();
 
         // Define coordinates to create convex shape
@@ -44,7 +44,7 @@ public class ConvexShapeTest {
         coordinates.add(List.of(1, 1));
         coordinates.add(List.of(2, 0));
 
-        Vector<List<Integer>> convexPolygon = validator.convexShapeCreator(coordinates);
+        Vector<List<Integer>> convexPolygon = validator.generateConvexShape(coordinates);
 
         // Verify that the convex polygon is not null
         assertNotNull(convexPolygon);
